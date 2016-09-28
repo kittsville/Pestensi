@@ -8,13 +8,6 @@ API_URL   = 'http://meston.localhost/api/v1/'
 class MestonException(Exception):
     pass
 
-class CommandException(Exception):
-    def __init__(self, command_name):
-        self.command_name = command_name
-    
-    def __str__(self):
-        return 'Game does not have command "{}"'.format(self.command_name)
-
 def new_game():
     """Creates and returns new 10 Minutes to Meston Game"""
     
