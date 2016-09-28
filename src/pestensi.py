@@ -80,12 +80,35 @@ def get_commands(game):
 
 def is_command(commands, text):
     """Checks if the given text is a valid command for the current 10MtM game"""
-    return any(command['name'] == text for command in commands)
+    return any(text == command['name'] or text.startswith(command['name'] + ' ') for command in commands)
 
-def do_command(game, command):
+def do_command(game, game_commands, user_command):
     """Tries to apply to command to Game"""
+    
+    # If user specified command with no additional text e.g. 'sleep'
+    if any(game_command['name'] == user_command for game_command in game_commands):
+        command = user_command
+        text    = ''
+    
+    # User specified command with additional text e.g. 'grab mug'
+    else: 
+        possible_commands = []
+        
+        for game_command in game_commands:
+            if user_command.startswith(game_command['name'] + ' '):
+                possible_commands.append(game_command['name'])
+        
+        if len(possible_commands) == 0:
+            raise ValueError('Text submitted does not start with a valid command')
+        else:
+            command = max(possible_commands, key=len) # Chooses the longest possible command
+            text    = user_command[len(command) + 1:] # Gets text after command e.g. 'grab the mug' -> 'the mug'
+    
     url    = game_url(game) + 'commands/' + command
     params = {'key' : game['key']}
+    
+    if text:
+        params['text'] = text
     
     response = requests.post(url, params)
     

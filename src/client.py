@@ -25,7 +25,7 @@ while True:
             print "Not a valid command"
             continue
         
-        commands, messages = pestensi.do_command(game, user_input)
+        commands, messages = pestensi.do_command(game, commands, user_input)
         
         for message in messages:
             print message
