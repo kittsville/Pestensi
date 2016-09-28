@@ -2,11 +2,9 @@ import requests
 from json_parser import json_parser
 from re          import search
 from HTMLParser  import HTMLParser
-from sys         import exit
 
 if __name__ == '__main__':
     print "You're supposed to run client.py\nThis is just a library of functions!"
-    exit()
 
 API_URL   = 'http://meston.localhost/api/v1/'
 
