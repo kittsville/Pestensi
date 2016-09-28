@@ -16,7 +16,7 @@ print 'Game created!'
 
 # Command loop
 while True:
-    user_input = raw_input('Enter Command: ')
+    user_input = raw_input('Enter Command: ').strip()
     
     if user_input == 'exit':
         exit()
