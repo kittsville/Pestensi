@@ -1,6 +1,6 @@
 # Pestensi
 
-A Python client for playing the text adventure game [10 Minutes to Meston](https://github.com/kittsville/10-Minutes-to-Meston/)
+A Python client for playing the text adventure game [10 Minutes to Meston](https://github.com/kittsville/10-Minutes-to-Meston/).
 
 ## Requirements
 
