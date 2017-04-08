@@ -58,7 +58,7 @@ def game_url(arg):
 def do_command(game, user_command):
     """Tries to apply to command to Game"""
     
-    url    = game_url(game) + 'commands'
+    url    = game_url(game) + 'state'
     params = {
         'key'     : game['key'],
         'command' : user_command,
