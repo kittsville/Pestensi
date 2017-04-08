@@ -10,8 +10,6 @@ else:
     print 'Creating new game...'
     game = pestensi.new_game()
 
-commands = pestensi.get_commands(game)
-
 print 'Game created!'
 
 # Command loop
@@ -21,14 +19,7 @@ while True:
     if user_input == 'exit':
         exit()
     else:
-        if not pestensi.is_command(commands, user_input):
-            print "Not a valid command"
-            continue
-        
-        commands, messages = pestensi.do_command(game, commands, user_input)
+        messages = pestensi.do_command(game, user_input)
         
         for message in messages:
             print message
-        
-        if len(commands) == 0:
-            exit()
